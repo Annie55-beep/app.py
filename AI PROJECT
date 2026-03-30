@@ -1,0 +1,31 @@
+from flask import Flask, jsonify
+
+# Create the Flask app
+app = Flask(__name__)
+
+# Home route
+@app.route('/')
+def home():
+    return "Hello, World!"
+
+# API route - single object
+@app.route('/api/data')
+def get_data():
+    return jsonify({
+        "name": "Annabel",
+        "role": "Software Developer",
+        "project": "Flask Toolkit"
+    })
+
+# API route - list of users
+@app.route('/api/users')
+def get_users():
+    return jsonify([
+        {"id": 1, "name": "Annabel"},
+        {"id": 2, "name": "Alex"},
+        {"id": 3, "name": "Jordan"}
+    ])
+
+# Run the app
+if __name__ == '__main__':
+    app.run(debug=True)
